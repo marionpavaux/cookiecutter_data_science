@@ -28,8 +28,7 @@ $ conda install cookiecutter
 ------------
 
 ``` bash
-    cd B-ML_Labs/projects
-    cookiecutter git@github.com:marionpavaux/cookie_cutter_data_science_baracoda.git 
+    cookiecutter git@github.com:marionpavaux/cookie_cutter_data_science.git 
 ```
   
 Then run 
