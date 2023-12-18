@@ -1,0 +1,19 @@
+{% if cookiecutter.package_manager == 'conda' %}
+name: {{ cookiecutter.repo_name }}
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.11.6
+  - numpy=1.26.2 
+  - matplotlib=3.8.0
+  - pandas=2.1.4
+  - black=23.11.0
+  - flake8=6.1.0
+  - flake8-pyproject=1.2.3
+{% cookiecutter.mypy == 'y' %}
+  - mypy=1.7.1
+{% endif %}
+prefix: ~/miniconda3/envs/{{ cookiecutter.repo_name }}
+{% endif %}
+
