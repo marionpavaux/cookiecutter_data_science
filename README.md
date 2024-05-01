@@ -23,7 +23,7 @@ $ conda config --add channels conda-forge
 $ conda install cookiecutter
 ```
 
-### Install:
+### Install
 
 ```bash
 cookiecutter git@github.com:marionpavaux/cookie_cutter_data_science.git
