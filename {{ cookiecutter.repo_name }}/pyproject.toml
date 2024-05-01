@@ -72,4 +72,4 @@ ignore-init-method = true
 ignore-init-module = true
 fail-under = 5
 verbose = 1
-generate-badge = "projects/{{ cookiecutter.repo_name }}/"
+generate-badge = "."

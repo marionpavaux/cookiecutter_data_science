@@ -45,17 +45,12 @@ endif
 	poetry run pre-commit install
 {% endif %}
 
-activate:
-	@echo "Activating virtual environment"
-	{% if cookiecutter.package_manager == "conda" %}
-	@$(CONDA_ACTIVATE) $(PROJECT_NAME)
-	{% elif cookiecutter.package_manager == "poetry" %}
-	. venv/bin/activate
-	{% endif %}
 
 data:
-	$(PYTHON_INTERPRETER) src/make_dataset.py "hum"
-	$(PYTHON_INTERPRETER) src/make_dataset.py "smarttag-magik"
+	$(PYTHON_INTERPRETER) src/make_dataset.py
+
+train:
+	$(PYTHON_INTERPRETER) src/make_training.py
 
 clean:
 	find . -type f -name "*.py[co]" -delete
@@ -68,10 +63,8 @@ format:
 check-format:
 	black --config pyproject.toml --check .
 
-check: 
-{% cookiecutter.mypy == 'y' %}
+check:
 	mypy --config-file pyproject.toml .
-{% endif %}
 	flake8 --toml-config pyproject.toml .
 
 docs_view:
@@ -81,4 +74,3 @@ docs_view:
 docs_save:
 	@echo Save documentation to docs...
 	pdoc src -o docs
-

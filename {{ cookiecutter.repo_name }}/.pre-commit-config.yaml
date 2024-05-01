@@ -9,14 +9,14 @@ repos:
     rev: 24.1a1
     hooks:
     - id: black
-      args: [--config=projects/{{ cookiecutter.repo_name }}/pyproject.toml, projects/{{ cookiecutter.repo_name }}/src/]
+      args: [--config=pyproject.toml, src/]
 -   repo: https://github.com/PyCQA/flake8
     rev: 6.1.0
     hooks:
     - id: flake8
-      args: [--toml-config=projects/{{ cookiecutter.repo_name }}/pyproject.toml, projects/{{ cookiecutter.repo_name }}/src/]
+      args: [--toml-config=pyproject.toml, src/]
       additional_dependencies: [Flake8-pyproject]
-{% cookiecutter.mypy == 'y' %} 
+{% if cookiecutter.mypy == 'y' %}
 -   repo: https://github.com/pre-commit/mirrors-mypy
     rev: v1.7.1
     hooks:
@@ -24,7 +24,7 @@ repos:
         exclude: ^tests/
         args:
           [
-            --config=projects/{{ cookiecutter.repo_name }}/pyproject.toml,
+            --config=pyproject.toml,
           ]
 {% endif %}
 -   repo: https://github.com/kynan/nbstripout
@@ -35,5 +35,4 @@ repos:
     rev: 1.5.0
     hooks:
       - id: interrogate
-        args: [--config=projects/{{ cookiecutter.repo_name }}/pyproject.toml, projects/{{ cookiecutter.repo_name }}/src/]
-
+        args: [--config=pyproject.toml, src/]
