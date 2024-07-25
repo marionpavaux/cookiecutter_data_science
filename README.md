@@ -1,5 +1,7 @@
 # Cookiecutter Data Science
 
+A modified version of cookiecutter Data Science : 
+
 > _A logical, reasonably standardized, but flexible project structure for doing and sharing data science work._
 >
 > _[Project homepage](http://drivendata.github.io/cookiecutter-data-science/)_
