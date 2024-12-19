@@ -23,25 +23,21 @@ install:
 ifeq (True,$(HAS_CONDA))
 	@echo ">>> Detected conda, creating conda environment."
 ifeq (3,$(findstring 3,$(PYTHON_INTERPRETER)))
-	tar -xf "$(ROOT_DIR)/setup/albatross_packages/preprocessing_data_models.tar.gz" -C /tmp
-	conda env create --quiet -f environment.yml
+	mamba env create -f environment.yml
 	conda init bash
 	@$(CONDA_ACTIVATE) $(PROJECT_NAME)
 	$(PYTHON_INTERPRETER) -m pip install --quiet poetry
 	poetry install
-	poetry add "$(ROOT_DIR)/setup/config_bml/." /tmp/wheel/al_ai_pre_processing_data_models-*-py3-none-any.whl
 	poetry run pre-commit install
 endif
 else
 	@echo ">>> Add conda to your shell and run make create_environment again"
 endif
 {% elif cookiecutter.package_manager == "poetry" %}
-	tar -xf "$(ROOT_DIR)/setup/albatross_packages/preprocessing_data_models.tar.gz" -C /tmp
 	pipx install poetry 
 	$(PYTHON_INTERPRETER) -m venv env
 	poetry env use env/bin/python3
 	poetry install
-	poetry add "$(ROOT_DIR)/setup/config_bml/." /tmp/wheel/al_ai_pre_processing_data_models-*-py3-none-any.whl 
 	poetry run pre-commit install
 {% endif %}
 
@@ -50,7 +46,7 @@ data:
 	$(PYTHON_INTERPRETER) src/make_dataset.py
 
 train:
-	$(PYTHON_INTERPRETER) src/make_training.py
+	$(PYTHON_INTERPRETER) src/train_model.py
 
 clean:
 	find . -type f -name "*.py[co]" -delete
