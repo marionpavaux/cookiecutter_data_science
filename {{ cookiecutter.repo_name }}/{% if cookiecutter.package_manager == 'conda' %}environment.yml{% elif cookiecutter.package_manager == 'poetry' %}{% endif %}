@@ -11,9 +11,11 @@ dependencies:
   - black=23.11.0
   - flake8=6.1.0
   - flake8-pyproject=1.2.3
+  - pre-commit=4.0.1
 {% cookiecutter.mypy == 'y' %}
   - mypy=1.7.1
+  - mypy_extensions=1.0.0
 {% endif %}
-prefix: ~/miniconda3/envs/{{ cookiecutter.repo_name }}
+  - tqdm=24.2
 {% endif %}
 
