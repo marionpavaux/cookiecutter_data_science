@@ -60,9 +60,8 @@ The directory structure of your new project looks like this:
 │
 ├── models             <- Trained and serialized models, model predictions, or model summaries
 │
-├── scipts             <- Scripts and Jupyter notebooks. Naming convention is a number (for ordering),
-│                         the creator's initials, and a short `-` delimited description, e.g.
-│                         `1.0-jqp-initial-data-exploration`.
+├── scripts            <- Scripts. Naming convention is a number (for ordering).
+├── notebooks            <- Scripts. Naming convention is a number (for ordering).
 │
 ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
 │
@@ -72,11 +71,9 @@ The directory structure of your new project looks like this:
 ├── src                <- Source code for use in this project.
 │   ├── __init__.py    <- Makes src a Python module
 │   │
-│   ├── data           <- Package to download or generate data. make_dataset is only an example.
-│   │   └── make_dataset.py
+│   ├── data           <- Package to download or generate data.
 │   │
-│   ├── features       <- Package to turn raw data into features for modeling. build_features is only an example.
-│   │   └── build_features.py
+│   ├── features       <- Package to turn raw data into features for modeling. 
 │   │
 │   ├── models         <- Package to train models and then use trained models to make
 │   │   │                 predictions. predict_model and train_model are only examples.
@@ -90,7 +87,6 @@ The directory structure of your new project looks like this:
 │
 ├── test_environment.py
 ├── {% if cookiecutter.package_manager == 'conda' %}environment.yml{% elif cookiecutter.package_manager == 'pip' %}requirements.txt{% endif %}                <- Package requirements.
-├── config_proj.json   <- Used by the config_bml package to find upper packages
 ├── .gitignore
 ├── .pre-commit-config.yaml <- Applies black and nbstripout, and checks pep8 conventions as well as doctring percentage
 ├── poetry.lock        <- Keeps track of pip dependencies and requirements
