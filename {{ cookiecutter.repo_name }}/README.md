@@ -19,9 +19,8 @@
     │
     ├── models             <- Trained and serialized models, model predictions, or model summaries
     │
-    ├── notebooks          <-Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
+    ├── notebooks          <-Jupyter notebooks. Naming convention is a number (for ordering).
+    ├── scripts            <-Scritps. Naming convention is a number (for ordering).
     │
     ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
     │
@@ -30,7 +29,8 @@
     │
     ├── scripts            <- Scripts.
     │   ├── make_dataset.py           <- Clean and process data to construct training/validation datasets.
-    │   └── make_training.py          <- Load, train and save models. 
+    │   ├── train_model.py          <- Load, train and save models. 
+    │   └── eval_model.py          <- Load, train and save models. 
     │
     ├── src                <- Source code for use in this project.
     │   ├── __init__.py    <- Makes src a Python module
