@@ -4,19 +4,19 @@ channels:
   - defaults
   - conda-forge
 dependencies:
-  - python=3.13.1
-  - numpy=1.26.2 
-  - matplotlib=3.8.0
-  - pandas=2.1.4
-  - black=23.11.0
-  - flake8=6.1.0
+  - python=3.12
+  - numpy=2.2.1 
+  - matplotlib=3.9.3
+  - pandas=2.2.3
+  - black=24.10.0
+  - flake8=7.1.1
   - flake8-pyproject=1.2.3
-  - pdoc3=0.8.1
+  - pdoc3=0.11.5
   - pre-commit=4.0.1
 {% cookiecutter.mypy == 'y' %}
-  - mypy=1.7.1
+  - mypy=1.14.0
   - mypy_extensions=1.0.0
 {% endif %}
-  - tqdm=24.2
+  - tqdm=4.67.1
 {% endif %}
 
