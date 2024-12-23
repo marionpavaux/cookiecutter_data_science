@@ -6,7 +6,7 @@
 
 ```
     ├── LICENSE
-    ├── Makefile           <- Makefile with commands like `make dataset` or `make training`
+    ├── Makefile           <- Makefile with commands like `make install` or `make clean`
     ├── README.md          <- The top-level README for developers using this project.
     ├── data
     │   ├── external       <- Data from third party sources.
@@ -53,11 +53,11 @@
     ├── tests              <- Contains tests.
     │ 
     ├── test_environment.py
-    ├── {% if cookiecutter.package_manager == 'conda' %}environment.yml{% elif cookiecutter.package_manager == 'pip' %}requirements.txt{% endif %}                <- Package requirements.
+    {% if cookiecutter.package_manager == 'mamba' %}├── environment.yml       <- Package requirements.{% endif %} 
     ├── .gitignore
     ├── .pre-commit-config.yaml <- Applies black and nbstripout, and checks pep8 conventions as well as doctring percentage
-    ├── poetry.lock        <- Keeps track of pip dependencies and requirements
-    └── pyproject.toml     <- Specifies environment arguments
+    ├── poetry.lock        <- Keeps track of poetry dependencies after install
+    └── pyproject.toml     <- Specifies environment variables
 
 ```
 Project based on the **[cookiecutter data science template](https://drivendata.github.io/cookiecutter-data-science/)**. 
