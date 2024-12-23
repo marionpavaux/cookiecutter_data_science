@@ -1,4 +1,4 @@
-{% if cookiecutter.package_manager == 'conda' %}
+{% if cookiecutter.package_manager == 'mamba' %}
 name: {{ cookiecutter.repo_name }}
 channels:
   - defaults
