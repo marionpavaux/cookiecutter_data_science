@@ -74,8 +74,8 @@ check:
 
 docs_view:
 	@echo View API documentation...
-	pdoc src --http localhost:8080
+	pdoc3 src --http localhost:6006
 
 docs_save:
 	@echo Save documentation to docs...
-	pdoc src -o docs
+	pdoc3 --html src
