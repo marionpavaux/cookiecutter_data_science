@@ -6,16 +6,27 @@ authors = ["{{ cookiecutter.author_name }}"]
 
 
 [tool.poetry.dependencies]
-python = "^3.11"
-pdoc3 = "^0.10.0"
-notebook = "^6.4.10"
-pre-commit = "^3.3.3"
-platformdirs = "^3.5.0"
+python = "^3.12
+{% if cookiecutter.package_manager == 'poetry' %}
+pdoc3 = "^0.11.5"
+flake8-pyproject = "^1.2.3"
+flake8 = "^7.1.1"
+black = "^24.10.0"
+{% if cookiecutter.mypy == 'y' %}
+mypy = "^1.14.0"
+mypy-extensions = "^1.0.0"
+{% endif %}
+notebook = "^7.3.2"
+numpy = "^2.2.1"
+matplotlib = "3.9.3"
+pandas = "^2.2.3"
+tqdm = "^4.67.1"
+{% endif %}
 
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
-pre-commit = "^3.3.3"
+pre-commit = "^4.0.1"
 
 
 [build-system]
@@ -49,6 +60,7 @@ select = ['B', 'C', 'E', 'F', 'W', 'T4', 'B9']
 exclude = ['__init__.py']
 
 
+{% if cookiecutter.mypy == 'y' %}
 [tool.mypy]
 disallow_any_generics = true
 disallow_subclassing_any = true
@@ -65,6 +77,7 @@ warn_unused_configs = true
 ignore_missing_imports = true
 explicit_package_bases = true
 namespace_packages = true
+{% endif %}
 
 
 [tool.interrogate]
