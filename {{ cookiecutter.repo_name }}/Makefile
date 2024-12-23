@@ -9,18 +9,24 @@ PROJECT_NAME = {{ cookiecutter.repo_name }}
 PYTHON_INTERPRETER = python3
 
 
-ifeq (,$(shell which conda))
-HAS_CONDA=False
+ifeq (,$(shell which mamba))
+HAS_MAMBA=False
 else
-HAS_CONDA=True
+HAS_MAMBA=True
 CONDA_ACTIVATE=source $$(conda info --base)/etc/profile.d/conda.sh ; conda activate ; conda activate
+endif
+
+ifeq (,$(shell which poetry))
+HAS_POETRY=False
+else
+HAS_POETRY=True
 endif
 
 install:
 	@echo "Installing..."
-{% if cookiecutter.package_manager == "conda" %}
-ifeq (True,$(HAS_CONDA))
-	@echo ">>> Detected conda, creating conda environment."
+{% if cookiecutter.package_manager == "mamba" %}
+ifeq (True,$(HAS_MAMBA))
+	@echo ">>> Detected mamba, creating conda environment"
 ifeq (3,$(findstring 3,$(PYTHON_INTERPRETER)))
 	mamba env create -f environment.yml
 	conda init bash
@@ -30,16 +36,20 @@ ifeq (3,$(findstring 3,$(PYTHON_INTERPRETER)))
 	poetry run pre-commit install
 endif
 else
-	@echo ">>> Add conda to your shell and run make create_environment again"
+	@echo ">>> Add mamba to your shell and run make install again"
 endif
 {% elif cookiecutter.package_manager == "poetry" %}
-	pipx install poetry 
-	$(PYTHON_INTERPRETER) -m venv env
-	poetry env use env/bin/python3
+ifeq (True,$(HAS_POETRY))
+	@echo ">>> Detected poetry, creating poetry environment"
+ifeq (3,$(findstring 3,$(PYTHON_INTERPRETER)))
+	poetry config virtualenvs.in-project true
 	poetry install
 	poetry run pre-commit install
+endif
+else 
+	@echo ">>> Add poetry to your shell and run make install again"
+endif
 {% endif %}
-
 
 data:
 	$(PYTHON_INTERPRETER) src/make_dataset.py
