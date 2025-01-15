@@ -6,7 +6,7 @@ authors = ["{{ cookiecutter.author_name }}"]
 
 
 [tool.poetry.dependencies]
-python = "^3.12
+python = "^3.12"
 {% if cookiecutter.package_manager == 'poetry' %}
 pdoc3 = "^0.11.5"
 flake8-pyproject = "^1.2.3"
@@ -24,7 +24,7 @@ tqdm = "^4.67.1"
 {% endif %}
 
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 pytest = "^6.2.5"
 pre-commit = "^4.0.1"
 
