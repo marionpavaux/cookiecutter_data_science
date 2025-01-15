@@ -39,56 +39,64 @@ Follow the instructions in the terminal, then go in the project directory and ru
 make install
 ```
 
-Install all packages needed for your environment using the name of the project as the environment name. Use mamba or conda, or use poetry instead of pip. Poetry will create a poetry.lock file that is equivalent to requirements.txt.
+Install all packages needed for your environment using the name of the project as the environment name. Use mamba (conda-based), or use poetry (pip-based). Poetry will create a poetry.lock file that is equivalent to requirements.txt.
 
 ### Directory structure
 
 The directory structure of your new project looks like this:
 
 ```
-├── LICENSE
-├── Makefile           <- Makefile with commands like `make data` or `make train`
-├── README.md          <- The top-level README for developers using this project.
-├── data
-│   ├── external       <- Data from third party sources.
-│   ├── intermediate   <- Intermediate data that has been transformed.
-|   ├── preprocessed   <- Pre-processed data from data_processing package.
-│   ├── processed      <- The final, canonical data sets for modeling.
-│   └── raw            <- The original, immutable data dump.
-│
-├── config             <- Configuration files for launching scripts or constants in src folder.
-│
-├── models             <- Trained and serialized models, model predictions, or model summaries
-│
-├── scripts            <- Scripts. Naming convention is a number (for ordering).
-├── notebooks            <- Scripts. Naming convention is a number (for ordering).
-│
-├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-│
-├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures        <- Generated graphics and figures to be used in reporting
-│
-├── src                <- Source code for use in this project.
-│   ├── __init__.py    <- Makes src a Python module
-│   │
-│   ├── data           <- Package to download or generate data.
-│   │
-│   ├── features       <- Package to turn raw data into features for modeling. 
-│   │
-│   ├── models         <- Package to train models and then use trained models to make
-│   │   │                 predictions. predict_model and train_model are only examples.
-│   │   ├── predict_model.py
-│   │   └── train_model.py
-│   │
-│   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-│       └── visualize.py
-│
-├── tests              <- Contains tests.
-│
-├── test_environment.py
-├── {% if cookiecutter.package_manager == 'conda' %}environment.yml{% elif cookiecutter.package_manager == 'pip' %}requirements.txt{% endif %}                <- Package requirements.
-├── .gitignore
-├── .pre-commit-config.yaml <- Applies black and nbstripout, and checks pep8 conventions as well as doctring percentage
-├── poetry.lock        <- Keeps track of pip dependencies and requirements
-└── pyproject.toml     <- Specifies environment arguments
+    ├── LICENSE
+    ├── Makefile           <- Makefile with commands like `make install` or `make clean`
+    ├── README.md          <- The top-level README for developers using this project.
+    ├── data
+    │   ├── external       <- Data from third party sources.
+    │   ├── intermediate   <- Intermediate data that has been transformed.
+    |   ├── preprocessed   <- Pre-processed data from data_processing package.
+    │   ├── processed      <- The final, canonical data sets for modeling.
+    │   └── raw            <- The original, immutable data dump.
+    │
+    ├── config             <- Configuration files for launching scripts or constants in src folder.
+    │
+    ├── models             <- Trained and serialized models, model predictions, or model summaries
+    │
+    ├── notebooks          <-Jupyter notebooks. Naming convention is a number (for ordering).
+    ├── scripts            <-Scritps. Naming convention is a number (for ordering).
+    │
+    ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
+    │
+    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
+    │   └── figures        <- Generated graphics and figures to be used in reporting
+    │
+    ├── scripts            <- Scripts.
+    │   ├── make_dataset.py           <- Clean and process data to construct training/validation datasets.
+    │   ├── train_model.py          <- Load, train and save models. 
+    │   └── eval_model.py          <- Load, train and save models. 
+    │
+    ├── src                <- Source code for use in this project.
+    │   ├── __init__.py    <- Makes src a Python module
+    │   │
+    │   ├── data_processing           <- Package to download or generate data. clean is only an example.
+    │   │   └── clean.py
+    │   │
+    │   ├── features       <- Package to turn raw data into features for modeling. process is only an example.
+    │   │   └── process.py
+    │   │
+    │   ├── models         <- Package to train models and then use trained models to make
+    │   │   │                 predictions. models, predict and train are only examples.
+    │   │   ├── models.py
+    │   │   ├── train.py
+    │   │   └── predict.py
+    │   │
+    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
+    │       └── visualize.py
+    │ 
+    ├── tests              <- Contains tests.
+    │ 
+    ├── test_environment.py
+    {% if cookiecutter.package_manager == 'mamba' %}├── environment.yml       <- Package requirements.{% endif %} 
+    ├── .gitignore
+    ├── .pre-commit-config.yaml <- Applies black and nbstripout, and checks pep8 conventions as well as doctring percentage
+    ├── poetry.lock        <- Keeps track of poetry dependencies after install
+    └── pyproject.toml     <- Specifies environment variables
 ```
