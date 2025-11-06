@@ -52,7 +52,6 @@
     │ 
     ├── tests              <- Contains tests.
     │ 
-    ├── test_environment.py
     {% if cookiecutter.package_manager == 'mamba' %}├── environment.yml       <- Package requirements.{% endif %} 
     ├── .gitignore
     ├── .pre-commit-config.yaml <- Applies black and nbstripout, and checks pep8 conventions as well as doctring percentage

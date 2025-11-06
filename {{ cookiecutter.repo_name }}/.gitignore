@@ -89,10 +89,10 @@ target/
 .mypy_cache/
 
 # exlude models results
-#/models/
+/models
 
 # exclude data
-#data/
+/data/
 
 # exclude references and reports 
 #/references/
