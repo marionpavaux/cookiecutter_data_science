@@ -1,9 +1,9 @@
 [tool.poetry]
-name = "{{ cookiecutter.project_name }}"
+name = "{{ cookiecutter.repo_name | replace("-", "_") }}"
 version = "0.1.0"
 description = "{{ cookiecutter.description }}"
 authors = ["{{ cookiecutter.author_name }}"]
-packages = [{include = "src"}]
+packages = [{include = "{{ cookiecutter.project_name }}", from = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.12"

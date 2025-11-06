@@ -1,5 +1,7 @@
 # {{cookiecutter.project_name}}
 
+## Project description
+
 {{cookiecutter.description}}
 
 ## Project Organization
@@ -20,6 +22,7 @@
     ├── models             <- Trained and serialized models, model predictions, or model summaries
     │
     ├── notebooks          <-Jupyter notebooks. Naming convention is a number (for ordering).
+    │
     ├── scripts            <-Scritps. Naming convention is a number (for ordering).
     │
     ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
@@ -32,22 +35,23 @@
     │   ├── train_model.py          <- Load, train and save models. 
     │   └── eval_model.py          <- Load, train and save models. 
     │
-    ├── src                <- Source code for use in this project.
+    ├── src/{{ cookiecutter.repo_name | replace("-", "_") }}  <- Packagable source code for this project.
     │   ├── __init__.py    <- Makes src a Python module
     │   │
-    │   ├── data_processing           <- Package to download or generate data. clean is only an example.
-    │   │   └── clean.py
+    │   ├── data           <- Package to download or generate data. clean is only an example.
+    │   │   ├── __init__.py
+    │   │   ├── clean.py
+    │   │   └── features.py
     │   │
-    │   ├── features       <- Package to turn raw data into features for modeling. process is only an example.
-    │   │   └── process.py
-    │   │
-    │   ├── models         <- Package to train models and then use trained models to make
-    │   │   │                 predictions. models, predict and train are only examples.
+    │   ├── dl         <- Package to train models and then use trained models to make
+    │   │   ├── __init__.py                 predictions. models, predictor and trainer are only examples.
+    │   │   ├── dataloaders.py
     │   │   ├── models.py
-    │   │   ├── train.py
-    │   │   └── predict.py
+    │   │   ├── trainer.py
+    │   │   └── predictor.py
     │   │
     │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
+    │       ├── __init__.py
     │       └── visualize.py
     │ 
     ├── tests              <- Contains tests.
@@ -61,3 +65,12 @@
 ```
 Project based on the **[cookiecutter data science template](https://drivendata.github.io/cookiecutter-data-science/)**. 
 
+## Use in other projects
+
+You can dynamically import the sources of this project in other projects. 
+Simply add this to the pyproject.toml of the project in which you want to use those sources.
+
+```
+[tool.poetry.dependencies]
+{{cookiecutter.project_name}} = {path = "[path_to_this_repository]/{{cookiecutter.project_name}}", develop = true}
+```
