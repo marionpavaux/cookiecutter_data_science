@@ -61,6 +61,7 @@ The directory structure of your new project looks like this:
     ├── models             <- Trained and serialized models, model predictions, or model summaries
     │
     ├── notebooks          <-Jupyter notebooks. Naming convention is a number (for ordering).
+    │
     ├── scripts            <-Scritps. Naming convention is a number (for ordering).
     │
     ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
@@ -73,30 +74,31 @@ The directory structure of your new project looks like this:
     │   ├── train_model.py          <- Load, train and save models. 
     │   └── eval_model.py          <- Load, train and save models. 
     │
-    ├── src                <- Source code for use in this project.
+    ├── src/{{ cookiecutter.repo_name | replace("-", "_") }}  <- Packagable source code for this project.
     │   ├── __init__.py    <- Makes src a Python module
     │   │
-    │   ├── data_processing           <- Package to download or generate data. clean is only an example.
-    │   │   └── clean.py
+    │   ├── data           <- Package to download or generate data. clean is only an example.
+    │   │   ├── __init__.py
+    │   │   ├── clean.py
+    │   │   └── features.py
     │   │
-    │   ├── features       <- Package to turn raw data into features for modeling. process is only an example.
-    │   │   └── process.py
-    │   │
-    │   ├── models         <- Package to train models and then use trained models to make
-    │   │   │                 predictions. models, predict and train are only examples.
+    │   ├── dl         <- Package to train models and then use trained models to make
+    │   │   ├── __init__.py                 predictions. models, predictor and trainer are only examples.
+    │   │   ├── dataloaders.py
     │   │   ├── models.py
-    │   │   ├── train.py
-    │   │   └── predict.py
+    │   │   ├── trainer.py
+    │   │   └── predictor.py
     │   │
     │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
+    │       ├── __init__.py
     │       └── visualize.py
     │ 
     ├── tests              <- Contains tests.
     │ 
-    ├── test_environment.py
     {% if cookiecutter.package_manager == 'mamba' %}├── environment.yml       <- Package requirements.{% endif %} 
     ├── .gitignore
     ├── .pre-commit-config.yaml <- Applies black and nbstripout, and checks pep8 conventions as well as doctring percentage
     ├── poetry.lock        <- Keeps track of poetry dependencies after install
     └── pyproject.toml     <- Specifies environment variables
+
 ```
